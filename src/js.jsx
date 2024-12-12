@@ -22,6 +22,8 @@ function DictionaryDisplay() {
   };
 
   return (
+    <>
+    <h1 className='life'>Life Hacks!</h1>
     <div className="dictionary-container">
       {Object.entries(items).map(([key, value]) => (
         <div key={key} className="dictionary-card">
@@ -30,6 +32,8 @@ function DictionaryDisplay() {
         </div>
       ))}
     </div>
+    </>
+    
   );
 }
 
