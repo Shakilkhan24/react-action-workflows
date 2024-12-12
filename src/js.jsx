@@ -32,7 +32,7 @@ function DictionaryDisplay() {
         </div>
       ))}
     </div>
-    <>
+    </>
     
   );
 }
