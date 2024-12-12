@@ -1,0 +1,54 @@
+.button-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button-group {
+  margin: 20px 0;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-happy {
+  background-color: #ffcc00;
+  color: black;
+}
+
+.btn-sad {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-excited {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-tired {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-curious {
+  background-color: #17a2b8;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.response-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-style: italic;
+  color: #333;
+}
