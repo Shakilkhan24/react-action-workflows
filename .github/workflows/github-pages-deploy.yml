@@ -1,26 +1,39 @@
-name: deploy using github pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deployment when pushing to the main branch
   pull_request:
     branches:
-      - main
-  
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - main  # Trigger deployment when opening a PR to the main branch
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - id: build-publish
-        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+      # Checkout the code from GitHub
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          path: dist # Ensure the path is correct (e.g., 'dist' for Vite)
+          node-version: '20'  # Set your desired Node.js version
+
+      # Install dependencies and build the React app
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch that GitHub Pages is served from
+          folder: dist # The folder containing the build files
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token to authenticate
